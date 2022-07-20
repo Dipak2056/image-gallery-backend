@@ -4,6 +4,7 @@ import cors from "cors";
 import morgan from "morgan";
 import helmet from "helmet";
 import { dbConnect } from "./src/config/db.js";
+import path from "path";
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -25,6 +26,10 @@ app.get("/", (req, res, next) => {
 //Routers
 import labeledimageRouter from "./src/routers/labeledimageRouter.js";
 app.use("/image-upload", labeledimageRouter);
+
+//server static content
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, "public")));
 
 //bound api with the port to serve on the internet
 app.listen(PORT, (err) => {

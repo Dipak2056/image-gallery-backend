@@ -1,5 +1,5 @@
 ###Get requests
-GET http://localhost:8000/upload 
+GET http://localhost:8000/image-upload 
 
 
 ###post requests
