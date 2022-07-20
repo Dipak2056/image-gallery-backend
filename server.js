@@ -22,6 +22,9 @@ app.get("/", (req, res, next) => {
     message: "you have reached the api end point",
   });
 });
+//Routers
+import labeledimageRouter from "./src/routers/labeledimageRouter.js";
+app.use("/upload", labeledimageRouter);
 
 //bound api with the port to serve on the internet
 app.listen(PORT, (err) => {

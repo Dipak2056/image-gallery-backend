@@ -1,0 +1,12 @@
+###Get requests
+GET http://localhost:8000/upload 
+
+
+###post requests
+POST http://localhost:8000/upload 
+Content-Type: application/json
+
+{
+    "label":"mountains",
+    "images":["mteverst.jpg","annapurna.jpg"]
+}
