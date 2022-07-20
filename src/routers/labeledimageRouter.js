@@ -5,16 +5,31 @@ import {
 } from "../models/imageGallery.model.js";
 const router = express.Router();
 
+//multer setup
+import multer from "multer";
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    let error = null;
+    cb(error, "public/img/products");
+  },
+  filename: (req, file, cb) => {
+    const fullFileName = Date.now() + "-" + file.originalname;
+    cb(null, fullFileName);
+  },
+});
+const uploadmiddleWare = multer({ storage });
+
 //post image with the label
-router.post("/", async (req, res) => {
+router.post("/", uploadmiddleWare.array("images", 5), async (req, res) => {
   const data = req.body;
-  const result = await putLabelledImage(data);
-  result &&
-    res.json({
-      status: "success",
-      message: "image uploaded successfully",
-      result,
-    });
+  console.log(data);
+  //   const result = await putLabelledImage(data);
+  //   result &&
+  //     res.json({
+  //       status: "success",
+  //       message: "image uploaded successfully",
+  //       result,
+  //     });
 });
 //get image with the label
 router.get("/", async (req, res) => {

@@ -24,7 +24,7 @@ app.get("/", (req, res, next) => {
 });
 //Routers
 import labeledimageRouter from "./src/routers/labeledimageRouter.js";
-app.use("/upload", labeledimageRouter);
+app.use("/image-upload", labeledimageRouter);
 
 //bound api with the port to serve on the internet
 app.listen(PORT, (err) => {

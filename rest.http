@@ -3,7 +3,7 @@ GET http://localhost:8000/upload
 
 
 ###post requests
-POST http://localhost:8000/upload 
+POST http://localhost:8000/image-upload 
 Content-Type: application/json
 
 {
