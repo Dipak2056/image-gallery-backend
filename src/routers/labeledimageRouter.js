@@ -21,15 +21,16 @@ const uploadmiddleWare = multer({ storage });
 
 //post image with the label
 router.post("/", uploadmiddleWare.array("images", 5), async (req, res) => {
-  const data = req.body;
-  console.log(data);
-  //   const result = await putLabelledImage(data);
-  //   result &&
-  //     res.json({
-  //       status: "success",
-  //       message: "image uploaded successfully",
-  //       result,
-  //     });
+  const files = req.files;
+  const images = files.map((img) => img.path);
+  console.log(images);
+  const result = await putLabelledImage({ ...req.body, images });
+  result &&
+    res.json({
+      status: "success",
+      message: "images uploaded successfully",
+      result,
+    });
 });
 //get image with the label
 router.get("/", async (req, res) => {

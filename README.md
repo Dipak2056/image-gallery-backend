@@ -11,3 +11,7 @@ This tutorial will give you the insight on how to upload image in the server. Fo
    => We can write multer code in the server or in the router. I chose to write in the router.
    => First we will simply set the images in the server.
    => Then we will grab the file path and set the file path in mongodb.
+   a. now grab the files from req.files;
+   b. map the files according to path and store in variable images. as
+   ➡️ const images = files.map((img) => img.path);
+   c. insert the req.body, and that images in database by spreading req.body and images as object.
